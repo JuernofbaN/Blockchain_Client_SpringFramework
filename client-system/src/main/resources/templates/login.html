@@ -46,12 +46,12 @@
 </head>
 <body>
 <center> <h1> User Login Form </h1> </center>
-<form method="POST" th:action="@{/login}" th:object="${mail}">
+<form th:action="@{/login}" th:object="${client}" method="post">
     <div class="container">
         <label>User mail : </label>
-        <input type="text" placeholder="Enter User mail" name="username" required th:field="*">
+        <input type="text" placeholder="Enter User mail" name="mail" autofocus="autofocus" >
         <label>Password : </label>
-        <input type="password" placeholder="Enter Password" name="password" required>
+        <input type="password" placeholder="Enter Password" name="password">
         <button type="submit">Login</button>
     </div>
 </form>
