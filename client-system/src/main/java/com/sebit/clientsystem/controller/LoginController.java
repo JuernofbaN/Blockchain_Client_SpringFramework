@@ -24,7 +24,7 @@ public class LoginController {
     }
 
     @PostMapping
-    public String login(@ModelAttribute(name = "client") Client client){
+    public String login(@ModelAttribute(name = "client") Client client, Model model){
         String username = client.getMail();
         String password = client.getPassword();
         System.out.println(username);
@@ -34,6 +34,7 @@ public class LoginController {
             System.out.println("Böyle bir kullanıcı vardır.");
             return "login";
         }
-        return "clients";
+        model.addAttribute("invalidLogin", true);
+        return "login";
     }
 }
