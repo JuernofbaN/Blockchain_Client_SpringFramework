@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Client Management System</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+    <div class ="container">
+        <div class ="row">
+            <h1>List Clients</h1>
+        </div>
+        <table class = "table table-dark table-bordered">
+<thead class = "table-dark">
+<tr>
+    <th>Client name</th>
+    <th>Client password</th>
+    <th>Client id</th>
+    <th>Client address</th>
+    <th>Client mail</th>
+    <th>Actions</th>
+</tr>
+</thead>
+            <tr th:each = "client: ${clients}">
+                <td th:text = "${client.name}"></td>
+                <td th:text = "${client.password}"></td>
+                <td th:text = "${client.id}"></td>
+                <td th:text = "${client.address}"></td>
+                <td th:text = "${client.mail}"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
