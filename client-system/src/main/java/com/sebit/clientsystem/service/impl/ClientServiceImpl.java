@@ -30,4 +30,15 @@ public class ClientServiceImpl implements ClientService {
 
         return false;
     }
+
+    @Override
+    public Client findClientByMail(String mail) {
+        List<Client> clients = clientRepository.findAll();
+
+        for(Client client : clients){
+            if(client.getMail().equals(mail))
+                return client;
+        }
+        return null;
+    }
 }

@@ -6,4 +6,5 @@ import java.util.List;
 public interface ClientService {
     List<Client> getAllStudents();
     Boolean hasUserPasswordCombo(String mail, String password);
+    Client findClientByMail(String mail);
 }

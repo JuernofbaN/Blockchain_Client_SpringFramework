@@ -48,7 +48,7 @@
 <center> <h1> User Login Form </h1> </center>
 <form th:action="@{/login}" th:object="${client}" method="post">
     <div class="container">
-        <p th:if="${invalidLogin}" class="error">Mail or password is wrong!</p>
+        <p th:if="${invalidLogin}">Mail or password is wrong!</p>
         <label>User mail : </label>
         <input type="text" placeholder="Enter User mail" name="mail" autofocus="autofocus" >
         <label>Password : </label>

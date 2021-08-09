@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/login")
 public class LoginController {
@@ -24,15 +26,12 @@ public class LoginController {
     }
 
     @PostMapping
-    public String login(@ModelAttribute(name = "client") Client client, Model model){
-        String username = client.getMail();
-        String password = client.getPassword();
-        System.out.println(username);
-        System.out.println(password);
-        System.out.println(client.toString());
+    public String login(@ModelAttribute(name = "client") Client client, Model model, HttpSession session){
+        session.setAttribute("client", client);
+        System.out.println(client);
         if(clientService.hasUserPasswordCombo(client.getMail(),client.getPassword())){
             System.out.println("Böyle bir kullanıcı vardır.");
-            return "login";
+            return "forward:/home/entry";
         }
         model.addAttribute("invalidLogin", true);
         return "login";
