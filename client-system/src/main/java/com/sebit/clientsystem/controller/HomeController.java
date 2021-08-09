@@ -24,7 +24,7 @@ public class HomeController {
     }
 
     @PostMapping("/entry")
-    public String post(HttpSession session){
+    public String processEntry(HttpSession session){
         System.out.println("posttayim");
         Client client = null;
         if(session.getAttribute("client") != null){
@@ -33,8 +33,13 @@ public class HomeController {
             System.out.println("Home page: " + client);
             session.setAttribute("client", client);
         }
-        return  "home";
+        return  "forward:/home/main";
     }
 
+    @PostMapping("/main")
+    public String processMain(HttpSession session){
+        System.out.println("Maindeyim: " + (Client) session.getAttribute("client"));
+        return "home";
+    }
 
 }
