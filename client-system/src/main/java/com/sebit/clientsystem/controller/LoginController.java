@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/login")
 public class LoginController {
 
     private ClientService clientService;
@@ -17,14 +18,13 @@ public class LoginController {
         this.clientService = clientService;
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String getView(Model model){
-    model.addAttribute("mail", "");
+    @GetMapping
+    public String getView(){
         return "login";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@ModelAttribute(name = "client") Client client, Model model){
+    @PostMapping
+    public String login(@ModelAttribute(name = "client") Client client){
         String username = client.getMail();
         String password = client.getPassword();
         System.out.println(username);
