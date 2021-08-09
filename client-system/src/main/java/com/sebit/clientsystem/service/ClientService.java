@@ -7,4 +7,5 @@ public interface ClientService {
     List<Client> getAllStudents();
     Boolean hasUserPasswordCombo(String mail, String password);
     Client findClientByMail(String mail);
+    void addClient(Client client);
 }

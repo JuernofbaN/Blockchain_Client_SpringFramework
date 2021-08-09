@@ -26,6 +26,13 @@ public class Client {
         this.password = password;
     }
 
+    public Client(Client client) {
+        this.name = client.name;
+        this.address = client.address;
+        this.mail = client.mail;
+        this.password = client.password;
+    }
+
     public String getName() {
         return name;
     }

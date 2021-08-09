@@ -41,4 +41,10 @@ public class ClientServiceImpl implements ClientService {
         }
         return null;
     }
+
+    @Override
+    public void addClient(Client client) {
+        System.out.println("addClient: " + client);
+        clientRepository.save(client);
+    }
 }
