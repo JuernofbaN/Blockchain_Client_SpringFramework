@@ -31,6 +31,7 @@ public class HomeController {
             client = (Client) session.getAttribute("client");
             client = clientService.findClientByMail(client.getMail());
             System.out.println("Home page: " + client);
+            session.setAttribute("client", client);
         }
         return  "home";
     }
