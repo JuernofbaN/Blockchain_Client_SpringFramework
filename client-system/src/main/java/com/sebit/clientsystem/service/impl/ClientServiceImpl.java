@@ -18,4 +18,16 @@ public class ClientServiceImpl implements ClientService {
     public List<Client> getAllStudents() {
         return clientRepository.findAll();
     }
+
+    @Override
+    public Boolean hasUserPasswordCombo(String mail, String password) {
+        List<Client> clients = clientRepository.findAll();
+
+        for(Client client : clients){
+            if(client.getMail().equals(mail) && client.getPassword().equals(password))
+                return true;
+        }
+
+        return false;
+    }
 }
