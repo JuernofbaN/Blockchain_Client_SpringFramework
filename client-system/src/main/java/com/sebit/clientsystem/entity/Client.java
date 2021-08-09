@@ -9,13 +9,11 @@ public class Client {
     private String name;
     @Column(name = "address", nullable = false)
     private String address;
+    @Id
     @Column(name = "mail", nullable = false)
     private String mail;
     @Column(name = "password", nullable = false)
     private String password;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     public Client(){
 
@@ -60,15 +58,6 @@ public class Client {
         this.password = password;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Id
-    public Long getId() {
-        return id;
-    }
-
     @Override
     public String toString() {
         return "Client{" +
@@ -76,7 +65,6 @@ public class Client {
                 ", address='" + address + '\'' +
                 ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
-                ", id=" + id +
                 '}';
     }
 }

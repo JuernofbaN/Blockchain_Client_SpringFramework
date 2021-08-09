@@ -19,10 +19,8 @@ public class ClientSystemApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Client client2 = new Client("Gunes", "Yasamkent", "gunes@hotmail.com","password123");
-        client2.setId(1L);
         clientRepository.save(client2);
         Client client3 = new Client("Talha", "Kecioren", "talha@hotmail.com","pw1234");
-        client3.setId(3L);
         clientRepository.save(client3);
     }
 }
