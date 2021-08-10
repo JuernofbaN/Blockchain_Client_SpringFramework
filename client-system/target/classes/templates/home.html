@@ -161,7 +161,7 @@
     <p th:text="${session.client['address']}" th:unless="${session == null}"></p>
 
 
-    <form action="/home/send" method="post">
+    <form action="/sendForm" method="get">
         <button class="button button1">Send Money</button>
     </form>
 
