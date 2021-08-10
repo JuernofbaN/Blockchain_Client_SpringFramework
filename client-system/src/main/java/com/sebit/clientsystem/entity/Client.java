@@ -1,19 +1,26 @@
 package com.sebit.clientsystem.entity;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 
 @Entity
 @Table(name = "clients")
 public class Client {
+    @NotBlank(message="Name is required")
     @Column(name = "name", nullable = false)
     private String name;
+    @NotBlank(message="Address is required")
     @Column(name = "address", nullable = false)
     private String address;
+    @Email(message="Mail address should be valid")
     @Id
     @Column(name = "mail", nullable = false)
     private String mail;
+    @NotBlank(message="Password is required")
     @Column(name = "password", nullable = false)
     private String password;
     @Column(name = "wallet")

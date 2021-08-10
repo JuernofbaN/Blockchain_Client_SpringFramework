@@ -42,4 +42,9 @@ public class HomeController {
         return "home";
     }
 
+    @PostMapping("/send")
+    public String processSendingRequest(){
+        return "home";
+    }
+
 }
