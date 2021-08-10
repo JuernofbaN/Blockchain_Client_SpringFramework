@@ -39,7 +39,11 @@
             text-align: center;
             margin: 24px 0 12px 0;
         }
-
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         img.avatar {
             width: 40%;
             border-radius: 50%;
@@ -53,7 +57,17 @@
             float: right;
             padding-top: 16px;
         }
-
+        div {
+            height: 200px;
+            width: 50%;
+            justify-content: center;
+            align-items: center;
+        }
+        h2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         /* Change styles for span and cancel button on extra small screens */
         @media screen and (max-width: 300px) {
             span.psw {
@@ -72,7 +86,7 @@
 
 <form th:action="@{/login}" th:object="${client}" method="post">
 
-    <div class="container">
+    <div style="text-align: center;" class="container">
         <p th:if="${invalidLogin}">Mail or password is wrong!</p>
         <label>User mail : </label>
         <input type="text" placeholder="Enter User mail" name="mail" autofocus="autofocus" >
@@ -82,7 +96,7 @@
     </div>
 </form>
 <form th:action="@{/register}">
-    <div class="container">
+    <div style="text-align: center;" class="container">
         <button type="submit">Register</button>
     </div>
 </form>

@@ -1,6 +1,8 @@
 package com.sebit.clientsystem.entity;
 
 import javax.persistence.*;
+import javax.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
 
 @Entity
 @Table(name = "clients")
@@ -14,6 +16,8 @@ public class Client {
     private String mail;
     @Column(name = "password", nullable = false)
     private String password;
+    @Column(name = "wallet", nullable = false)
+    private String wallet;
 
     public Client(){
 
@@ -24,6 +28,7 @@ public class Client {
         this.address = address;
         this.mail = mail;
         this.password = password;
+        this.wallet = getSHA256Hash(mail);
     }
 
     public Client(Client client) {
@@ -65,6 +70,26 @@ public class Client {
         this.password = password;
     }
 
+    public String getWallet() { return wallet; }
+
+    public void setWallet(String wallet) { this.wallet = wallet; }
+    /**
+     * Returns a hexadecimal encoded SHA-256 hash for the input String.
+     * It is used for getting Wallets.
+     * @param data
+     * @return
+     */
+    private String getSHA256Hash(String data) {
+        String result = null;
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(data.getBytes("UTF-8"));
+            return DatatypeConverter.printHexBinary(hash); // make it printable
+        }catch(Exception ex) {
+            ex.printStackTrace();
+        }
+        return result;
+    }
     @Override
     public String toString() {
         return "Client{" +
@@ -74,4 +99,5 @@ public class Client {
                 ", password='" + password + '\'' +
                 '}';
     }
+
 }
