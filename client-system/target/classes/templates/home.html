@@ -160,7 +160,11 @@
     <span class="label success">User Address</span>
     <p th:text="${session.client['address']}" th:unless="${session == null}"></p>
 
-    <button class="button button1">Send Money</button>
+
+    <form action="/home/send" method="post">
+        <button class="button button1">Send Money</button>
+    </form>
+
     <button class="button button2">See Transactions</button>
 
 </div>

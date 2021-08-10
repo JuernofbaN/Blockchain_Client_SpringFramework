@@ -45,7 +45,7 @@ public class HomeController {
     @PostMapping("/send")
     public String processSendingRequest(){
         System.out.println("hoop burdayim");
-        return "sendFrom";
+        return "redirect:/sendForm";
     }
 
 }
