@@ -32,9 +32,9 @@ public class RegisterController {
         if( clientService.findClientByMail(newClient.getMail()) != null){
             model.addAttribute("invalidRegister", true);
             return "register";
+        }else{
+            clientService.addClient(newClient);
+            return "redirect:/login";
         }
-
-        clientService.addClient(newClient);
-        return "redirect:/login";
     }
 }

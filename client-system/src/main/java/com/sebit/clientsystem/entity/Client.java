@@ -16,7 +16,7 @@ public class Client {
     private String mail;
     @Column(name = "password", nullable = false)
     private String password;
-    @Column(name = "wallet", nullable = false)
+    @Column(name = "wallet")
     private String wallet;
 
     public Client(){
@@ -32,10 +32,12 @@ public class Client {
     }
 
     public Client(Client client) {
+        super();
         this.name = client.name;
         this.address = client.address;
         this.mail = client.mail;
         this.password = client.password;
+        this.wallet = client.getWallet();
     }
 
     public String getName() {
@@ -79,7 +81,7 @@ public class Client {
      * @param data
      * @return
      */
-    private String getSHA256Hash(String data) {
+    public String getSHA256Hash(String data) {
         String result = null;
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");

@@ -45,6 +45,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void addClient(Client client) {
         System.out.println("addClient: " + client);
+        client.setWallet(client.getSHA256Hash(client.getMail()));
         clientRepository.save(client);
     }
 }
