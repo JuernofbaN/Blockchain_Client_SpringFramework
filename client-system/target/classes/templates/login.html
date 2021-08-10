@@ -87,7 +87,6 @@
 <form th:action="@{/login}" th:object="${client}" method="post">
 
     <div style="text-align: center;" class="container">
-        <p th:if="${invalidLogin}">Mail or password is wrong!</p>
         <label>User mail : </label>
         <input type="text" placeholder="Enter User mail" name="mail" autofocus="autofocus" >
         <label>Password : </label>
@@ -98,6 +97,7 @@
 <form th:action="@{/register}">
     <div style="text-align: center;" class="container">
         <button type="submit">Register</button>
+        <p th:if="${invalidLogin}">Mail or password is wrong!</p>
     </div>
 </form>
 
