@@ -151,20 +151,18 @@
 </head>
 <body>
 
-    <h2> Home Page of &nbsp;<p th:text="${session.client['name']}" th:unless="${session == null}"></p></h2>
-    <div style="text-align: center;" class="container">
-        <span class="label success">VCloud Balance</span>
-        <p>141,2 VCloud</p>
-        <span class="label success">User Mail</span>
+<h2> Home Page of &nbsp;<p th:text="${session.client['name']}" th:unless="${session == null}"></p></h2>
+<div style="text-align: center;" class="container">
+    <span class="label success">VCloud Balance</span>
+    <p>141,2 VCloud</p>
+    <span class="label success">User Mail</span>
     <p th:text="${session.client['mail']}" th:unless="${session == null}"></p>
-        <span class="label success">User Address</span>
+    <span class="label success">User Address</span>
     <p th:text="${session.client['address']}" th:unless="${session == null}"></p>
 
-        <button class="button button1">Send Money</button>
-        <button class="button button2">See Transactions</button>
+    <button class="button button1">Send Money</button>
+    <button class="button button2">See Transactions</button>
 
-    </div>
+</div>
 </body>
 </html>
-
-
