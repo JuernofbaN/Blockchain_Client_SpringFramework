@@ -5,6 +5,12 @@
     <title>Title</title>
 </head>
 <body>
+<p th:text="${session.client['mail']}" th:unless="${session == null}"></p>
 
+<form th:action="@{/sendForm/sendMoney}" method="post">
+    <div style="text-align: center;" class="container">
+        <button type="submit">Send Money</button>
+    </div>
+</form>
 </body>
 </html>
