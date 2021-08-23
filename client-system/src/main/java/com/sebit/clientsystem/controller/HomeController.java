@@ -23,10 +23,10 @@ public class HomeController {
 
     @GetMapping
     public String getView(HttpSession session){
+        getBalance(session);
         return "home";
     }
 
-    @PostMapping("/balance")
     public String getBalance(HttpSession session){
         Client client = (Client) session.getAttribute("client");
         serverConnectionService.sendMessage("getBalance:" + client.getMail());
@@ -44,7 +44,8 @@ public class HomeController {
             client = clientService.findClientByMail(client.getMail());
             System.out.println("Home page: " + client);
             session.setAttribute("client", client);
-            session.setAttribute("balance", "?");
+            getBalance(session);
+            //session.setAttribute("balance", "?");
         }
         return  "forward:/home/main";
     }

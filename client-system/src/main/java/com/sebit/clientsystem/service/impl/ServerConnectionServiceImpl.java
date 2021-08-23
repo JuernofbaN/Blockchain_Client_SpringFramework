@@ -21,7 +21,7 @@ public class ServerConnectionServiceImpl implements ServerConnectionService {
             ArrayList<String> hostIps = new ArrayList<>();
             hostIps.add("172.20.10.2"); //mainServer
             if(!(message.contains("getBalance") || message.contains("getTransactions"))){
-                //hostIps.add("172.20.10.6");
+                hostIps.add("172.20.10.6");
             }
             //String host = "192.168.10.105";//"192.168.10.48";
             int port = 5025;

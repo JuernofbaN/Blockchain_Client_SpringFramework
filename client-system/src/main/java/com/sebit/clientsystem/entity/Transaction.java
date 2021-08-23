@@ -3,15 +3,17 @@ package com.sebit.clientsystem.entity;
 public class Transaction {
     private String sender;
     private String receiver;
-    private int amount;
+    private String amount;
+    private String date; //TODO
 
-    public Transaction() {
-    }
-
-    public Transaction(String sender, String receiver, int amount) {
+    public Transaction(String amount, String sender, String receiver, String date) {
         this.sender = sender;
         this.receiver = receiver;
         this.amount = amount;
+        this.date = date;
+    }
+
+    public Transaction() {
     }
 
     public String getSender() {
@@ -30,12 +32,20 @@ public class Transaction {
         this.receiver = receiver;
     }
 
-    public int getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override
@@ -43,7 +53,8 @@ public class Transaction {
         return "Transaction{" +
                 "sender='" + sender + '\'' +
                 ", receiver='" + receiver + '\'' +
-                ", amount=" + amount +
+                ", amount='" + amount + '\'' +
+                ", date='" + date + '\'' +
                 '}';
     }
 }

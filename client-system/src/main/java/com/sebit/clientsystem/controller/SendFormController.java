@@ -43,7 +43,7 @@ public class SendFormController {
     @PostMapping("/sendMoney")
     public String processMain(HttpSession session, @ModelAttribute(name = "newTransaction") Transaction newTransaction){
        System.out.println("sendMoneydeyim: " + (Client) session.getAttribute("client"));
-       sendTransaction(((Client) session.getAttribute("client")).getMail(), newTransaction.getReceiver(), newTransaction.getAmount());
+       sendTransaction(((Client) session.getAttribute("client")).getMail(), newTransaction.getReceiver(), Integer.parseInt(newTransaction.getAmount()));
        return "sendForm";
     }
 
