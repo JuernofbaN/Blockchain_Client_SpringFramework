@@ -155,9 +155,11 @@
 <h2> Home Page of &nbsp;<p th:text="${session.client['name']}" th:unless="${session == null}"></p></h2>
 <div style="text-align: center;" class="container">
     <span class="label success">VCloud Balance</span>
-    <p>141,2 VCloud</p>
+    <p th:text="${session.balance}" th:unless="${session == null}"> VCloud</p>
+
     <span class="label success">User Mail</span>
     <p th:text="${session.client['mail']}" th:unless="${session == null}"></p>
+
     <span class="label success">User Address</span>
     <p th:text="${session.client['address']}" th:unless="${session == null}"></p>
 
@@ -167,6 +169,10 @@
     </form>
 
     <button class="button button2">See Transactions</button>
+
+    <form action="/home/balance" method="post">
+    <button class="button button3">See Balance</button>
+    </form>
 
 </div>
 </body>

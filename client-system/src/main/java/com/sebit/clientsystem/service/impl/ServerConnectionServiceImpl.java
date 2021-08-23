@@ -1,8 +1,6 @@
 package com.sebit.clientsystem.service.impl;
 
-import com.sebit.clientsystem.controller.ConnectionThreadController;
 import com.sebit.clientsystem.service.ServerConnectionService;
-import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -13,6 +11,7 @@ import java.util.Scanner;
 @Service
 public class ServerConnectionServiceImpl implements ServerConnectionService {
     private static Socket socket;
+    private String receivedMessage;
 
     @Override
     public boolean sendMessage(String message) {
@@ -22,7 +21,7 @@ public class ServerConnectionServiceImpl implements ServerConnectionService {
             ArrayList<String> hostIps = new ArrayList<>();
             hostIps.add("172.20.10.2"); //mainServer
             if(!(message.contains("getBalance") || message.contains("getTransactions"))){
-                hostIps.add("172.20.10.2");
+                //hostIps.add("172.20.10.6");
             }
             //String host = "192.168.10.105";//"192.168.10.48";
             int port = 5025;
@@ -66,7 +65,7 @@ public class ServerConnectionServiceImpl implements ServerConnectionService {
                     BufferedWriter bw = bufferedWriters.get(j);
                     System.out.println("Message sent to the server : "+sendMessage); //
                     BufferedReader br = new BufferedReader(inputStreamReaders.get(j));
-                    Thread t = new ConnectionThreadController(bw, br, sendMessage);
+                    Thread t = new ConnectionThreadController(bw, br, sendMessage, this);
                     t.start();
                     threads.add(t);
                 }
@@ -76,10 +75,10 @@ public class ServerConnectionServiceImpl implements ServerConnectionService {
 
                 if (s.equals( "STOP")) //verify
                     break;
-                System.out.println("Enter a string");
+                //System.out.println("Enter a string");
                 long endTime = System.nanoTime();
                 long totalTime = endTime - startTime;
-                System.out.println(totalTime);
+                System.out.println("Elapsed Time: " + totalTime);
                 s = "END"; //Rezillik
             }
         } catch (Exception exception) { exception.printStackTrace(); }
@@ -91,6 +90,14 @@ public class ServerConnectionServiceImpl implements ServerConnectionService {
         return true;
     }
 
+    @Override
+    public String getReceivedMessage() {
+        return receivedMessage;
+    }
 
+    @Override
+    public void setReceivedMessage(String message) {
+        receivedMessage = message;
+    }
 }
 

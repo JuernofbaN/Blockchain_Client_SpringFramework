@@ -49,7 +49,6 @@ public class SendFormController {
 
 
     public boolean sendTransaction(String sender, String receiver, int amount){
-        return serverConnectionService.sendMessage("getBalance : " + sender); //TODO
-                //sender + " : " + receiver + " : VCloud :" + amount);
+        return serverConnectionService.sendMessage(sender + " : " + receiver + " : VCloud :" + amount);
     }
 }

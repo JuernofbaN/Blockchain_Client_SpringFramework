@@ -1,4 +1,7 @@
-package com.sebit.clientsystem.controller;
+package com.sebit.clientsystem.service.impl;
+import com.sebit.clientsystem.service.ServerConnectionService;
+import com.sebit.clientsystem.service.impl.ServerConnectionServiceImpl;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -9,10 +12,12 @@ public class ConnectionThreadController extends Thread{
     Socket s;
     BufferedReader br;
     String data;
-    public ConnectionThreadController( BufferedWriter bw, BufferedReader br, String data){
+    ServerConnectionService serverConnectionService;
+    public ConnectionThreadController( BufferedWriter bw, BufferedReader br, String data, ServerConnectionService serverConnectionService){
         this.bw = bw;
         this.br = br;
         this.data = data;
+        this.serverConnectionService = serverConnectionService;
     }
 
     @Override
@@ -23,6 +28,7 @@ public class ConnectionThreadController extends Thread{
             bw.flush();
             String message = br.readLine();
             System.out.println("Message received from the server : " + message);
+            serverConnectionService.setReceivedMessage(message);
         } catch (IOException e) {
             e.printStackTrace();
         }
