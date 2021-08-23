@@ -22,7 +22,7 @@ public class ConnectionThreadController extends Thread{
             bw.write(data);
             bw.flush();
             String message = br.readLine();
-            System.out.println("Message received from the server : " +message);
+            System.out.println("Message received from the server : " + message);
         } catch (IOException e) {
             e.printStackTrace();
         }
